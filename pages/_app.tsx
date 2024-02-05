@@ -37,6 +37,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     const workerURL = 'https://autonoweb-analytics.youssef02bigra.workers.dev/';
 
     // Send a fetch request to your worker
+    try{
     fetch(workerURL, {
       method: 'POST',
       headers: {
@@ -46,7 +47,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         path: window.location.pathname,
         website: EnvVars.SITE_NAME,
       }),
-    });
+    });}
+    catch (e) {
+      console.log(e)
+    }
   }, []);
   return (
     <>
@@ -66,7 +70,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <ColorModeScript />
       <GlobalStyle />
-
       <Providers>
         <Modals />
         <Navbar items={navItems} />

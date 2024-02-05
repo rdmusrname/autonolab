@@ -13,21 +13,20 @@ export default function Cta() {
     <CtaWrapper>
       <Container>
         <Stack>
-          <OverTitle>Lorem ipsum dolor sit amet</OverTitle>
-          <SectionTitle>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus delectus?</SectionTitle>
+          <OverTitle>I know it's really hard</OverTitle>
+          <SectionTitle>Making good-quality videos is hard, expensive, and time-consuming.</SectionTitle>
           <Description>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda beatae accusamus deleniti nihil quas tempora numquam, vitae
-            culpa.
+       Over the past few months, I've been working on developing a video generation app that uses AI to automate the entire process of creating videos. My goal is to create a real automated video production app where you can enter a topic and the app will search for trending ideas, suggest video titles, and then generate everything automatically using AI – including the actual video, suggested thumbnails, and suggested titles, in addition to providing media publishing companies with a solution to automatically convert any idea into powerful videos via a simple API.
           </Description>
           <ButtonGroup>
             <NextLink href="#early-access" passHref>
               <Button>
-                Subscribe to the newsletter <span>&rarr;</span>
+                Join Us <span>&rarr;</span>
               </Button>
             </NextLink>
-            <NextLink href="#whitepaper" passHref>
+            <NextLink href="#Examples" passHref>
               <OutlinedButton transparent>
-                Features <span>&rarr;</span>
+                Examples <span>&rarr;</span>
               </OutlinedButton>
             </NextLink>
           </ButtonGroup>

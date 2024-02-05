@@ -17,66 +17,104 @@ export default function Homepage({ posts }: InferGetStaticPropsType<typeof getSt
   return (
     <>
       <Head>
-        <title>{EnvVars.SITE_NAME}</title>
+        <title>AutonoLab</title>
         <meta
           name="description"
-          content="Tempor nostrud velit fugiat nostrud duis incididunt Lorem deserunt est tempor aute dolor ad elit."
+          content="Your ultimate AI-powered video content companion.Tempor nostrud velit fugiat nostrud duis incididunt Lorem deserunt est tempor aute dolor ad elit."
         />
       </Head>
       <HomepageWrapper>
+        
+      <Background />
+  <Foreground />
         <WhiteBackgroundContainer>
-          <ScrollableBlogPosts posts={posts} />
-          {/* <Hero />
-          <Partners />
-          <BasicSection imageUrl="/demo-illustration-1.svg" title="Lorem ipsum dolor sit amet consectetur." overTitle="sit amet gogo">
+          <Hero />
+          {/* <Partners /> */}
+          <BasicSection imageUrl="/transparent-robot.png" title="Experience the future of video creation with the cutting-edge AI video app." overTitle="">
+            
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, quidem error incidunt a doloremque voluptatem porro inventore
-              voluptate quo deleniti animi laboriosam.{' '}
-              <Link href="/help-center">Possimus ullam velit rem itaque consectetur, in distinctio?</Link> Lorem ipsum, dolor sit amet
-              consectetur adipisicing elit. Soluta repellendus quia quos obcaecati nihil. Laudantium non accusantium, voluptate eum nesciunt
-              at suscipit quis est soluta?
+            Artificial intelligence is revolutionizing society and the way we do everything, including the way we create and consume video content. Our cutting-edge AI video app makes it faster and easier to produce high-quality videos, offering a convenient and powerful solution for video creation. If you want to be a part of the AI revolution and experience the future of video creation, consider joining our waiting list. Don't miss out on this opportunity to see how AI is transforming the world – join the waiting list now and be a part of the future of video creation.
             </p>
           </BasicSection>
-          <BasicSection imageUrl="/demo-illustration-2.svg" title="Lorem ipsum dolor sit." overTitle="lorem ipsum" reversed>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, quidem error incidunt a doloremque voluptatem porro inventore{' '}
-              <strong>voluptate quo deleniti animi laboriosam</strong>. Possimus ullam velit rem itaque consectetur, in distinctio?
+          <BasicSection imageUrl="/3d-robot2.png" title="The World Is Changing - be a part of the future." overTitle="" reversed>
+            <p>   
+Create unique, engaging video content quickly and easily using the power of AI.
             </p>
             <ul>
-              <li>Professional point 1</li>
-              <li>Professional remark 2</li>
-              <li>Professional feature 3</li>
+              <li><strong>Save Time</strong> - Generate hundreds of high quality videos in a fraction of the time it would take to create them manually.</li>
+              <li><strong>Save Money</strong> - Save money by using AI to generate videos, cutting out the need for expensive production costs.</li>
+              <li><strong>Stress Free</strong> - Enjoy the convenience and ease of automated video creation with no stress or hassle of managing teams.</li>
+              <li><strong>Easy To Use</strong> - Enjoy the convenience and ease of automated video creation with no stress or hassle.</li>
             </ul>
-          </BasicSection> */}
+          </BasicSection>
         </WhiteBackgroundContainer>
-        {/* <DarkerBackgroundContainer>
+        <DarkerBackgroundContainer>
           <Cta />
           <FeaturesGallery />
-          <Features />
-          <Testimonials />
-        </DarkerBackgroundContainer> */}
+          <BasicSection imageUrl="/transparent-robot-with camera.png" title="Be a part of the future." overTitle="" reversed>
+            <p>   
+            <strong>Feedback Gathering:</strong> Since then, I've spoken to potential users to get feedback and gauge interest. I set up a waiting list and started collecting emails from early adopters while brainstorming marketing strategies and use cases.
+            <br/>
+            <br/>
+
+<strong>Deep into what makes great videos:</strong> I've always been interested in content creation. I started a tech tips and tricks centered YouTube channel and Facebook page with thousands of followers when I was just 15, without much knowledge but with a strong desire to create. I stopped for a while and moved on to other things, but I never lost that passion. This time, I went down a rabbit hole to discover what makes a great video, especially on YouTube, from the best in the field, such as Mr. Beast, Colin and Samir, Yon Youshaei, and even smaller, faceless channels. I didn't stop with just learning; I got my hands dirty by practicing and creating prompts, processes, Notion templates, advanced animation, and editing. I created multiple channels and trained a team, and you can find a sample video here. I gathered hands-on insights that will directly translate into our product.
+<br/>
+<br/>
+<strong>All in on AI:</strong> I've played with every open-source LLMS on the Hugging Face leaderboard, trending AI GitHub tools, AI news content from Lex Fridman guests to hobbyists trying to set up a cozy UI on free Colab, proprietary and rag systems, AI agents, AI images, videos, 3D models, advanced prompt engineering, and so on. I integrated AI workflows into my daily life, creating all sorts of personal assistants and side projects (AI autonomous website builders deployed +200 websites with one command, AI domain generators, etc.). This is revolutionary technology, and I'm all in.
+
+I'm ready, and I'm giving my soul fully to this. I can't wait to integrate the latest models and insights I've gathered from all this time. Be ready; this will be a unique journey.
+            </p>
+ 
+          </BasicSection>
+          {/* <Features /> */}
+          <ScrollableBlogPosts posts={posts} />
+          {/* <Testimonials /> */}
+        </DarkerBackgroundContainer>
       </HomepageWrapper>
     </>
   );
 }
+const Background = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-size: 100%;
+  background-repeat: none;
+  background-image: url(https://source.unsplash.com/a-digital-camera-with-a-green-light-on-it-UGzSBH4BPtA);
+`;
 
+const Foreground = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-size: 100%;
+  background-repeat: none;
+  background-image: url(https://source.unsplash.com/blue-and-white-floral-textile-11KDtiUWRq4);
+  mask-image: linear-gradient(var(--direction, -45deg), rgba(0,0,0,1) 40%, rgba(0,0,0,0) 60%);
+  mask-position: 50% 50%;
+  
+`;
 const HomepageWrapper = styled.div`
   & > :last-child {
     margin-bottom: 15rem;
   }
+  padding: 0;
 `;
 
 const DarkerBackgroundContainer = styled.div`
   background: rgb(var(--background));
-
   & > *:not(:first-child) {
     margin-top: 15rem;
   }
 `;
 
 const WhiteBackgroundContainer = styled.div`
-  background: rgb(var(--secondBackground));
 
+  padding: 0;
   & > :last-child {
     padding-bottom: 15rem;
   }

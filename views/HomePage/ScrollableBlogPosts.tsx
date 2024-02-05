@@ -29,8 +29,8 @@ export default function ScrollableBlogPosts({ posts }: ScrollableBlogPostsProps)
     <Section>
       <Container>
         <Content>
-          {/* <OverTitle>features</OverTitle>
-          <SectionTitle>What are you signing in for?</SectionTitle> */}
+          <OverTitle>Blog</OverTitle>
+          <SectionTitle>Check Out Our Latest Posts</SectionTitle>
         </Content>
       </Container>
 

@@ -1,4 +1,5 @@
 import NextImage from 'next/image';
+import YouTube from 'react-youtube';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Collapse from 'components/Collapse';
@@ -7,31 +8,66 @@ import OverTitle from 'components/OverTitle';
 import SectionTitle from 'components/SectionTitle';
 import ThreeLayersCircle from 'components/ThreeLayersCircle';
 import { media } from 'utils/media';
+import RichText from 'components/MDXRichText';
+import Quote from 'components/Quote';
 
 const TABS = [
   {
-    title: 'Find relevant media contacts - multiline title',
+    title: 'Real Time Data',
     description:
-      '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam quidem ipsam ratione dicta quis cupiditate consequuntur laborum ducimus iusto velit.</p>',
-    imageUrl: '/demo-illustration-3.png',
-    baseColor: '249,82,120',
+      '<p>Here are videos based on real time accurate Real Time Data (This case sports).</p>',
+    videoIds: ['Y0Xkjn1YYfM'],
+    baseColor: '188,153,132',
+    secondColor: '124,27,18',
+  },
+  {
+  title: 'News Videos',
+  description:
+    '<p>Here are videos based on real time accurate News.</p>',
+  videoIds: ['d9SBWpi34lE'],
+  baseColor: '108,193,32',
+  secondColor: '124,207,158',
+},
+  {
+    title: 'Quotes Videos',
+    description:
+      '<p>With a single command, it can generate hundreds of high-quality videos.</p>',
+    videoIds: ['iyULDE4hYcs'],
+    baseColor: '249,182,120',
     secondColor: '221,9,57',
   },
   {
-    title: 'Another amazing feature',
+    title: 'Story Videos',
     description:
-      '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam quidem ipsam ratione dicta quis cupiditate consequuntur laborum ducimus iusto velit.</p>',
-    imageUrl: '/demo-illustration-4.png',
-    baseColor: '57,148,224',
+      '<p>With a single command, it can generate hundreds of fictional video content using AI generated images.</p>',
+    videoIds: ['Y1Q2eQ-CfDc'],
+    baseColor: '29,82,20',
+    secondColor: '221,9,57',
+  },
+
+  {
+    title: 'Short Videos',
+    description:
+      '<p>Same! with a single command, It can generate hundreds of short videos using stock assets.</p>',
+    videoIds: ['Eim7iTDYmKc'],
+    baseColor: '157,48,224',
     secondColor: '99,172,232',
   },
   {
-    title: 'And yet... another truly fascinating feature',
+    title: 'Video Essays',
     description:
-      '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam quidem ipsam ratione dicta quis cupiditate consequuntur laborum ducimus iusto velit.</p>',
-    imageUrl: '/demo-illustration-5.png',
-    baseColor: '88,193,132',
-    secondColor: '124,207,158',
+      '<p>With a single command, it can generate hundreds of high-quality videos essays on different topics using AI generated images or stock assets.</p>',
+    videoIds: ['Nb7_zdBRuig'],
+    baseColor: '129,118,20',
+    secondColor: '21,69,157',
+  },
+  {
+    title: 'Stylized Quotes Videos',
+    description:
+      '<p>With a single command, it can generate hundreds of high-quality videos with different styles.</p>',
+    videoIds: ['DVf3hwSowkg'],
+    baseColor: '29,18,220',
+    secondColor: '201,9,157',
   },
 ];
 
@@ -44,8 +80,10 @@ export default function FeaturesGallery() {
 
     return (
       <ImageContainer key={singleTab.title} isActive={isActive}>
-        <NextImage src={singleTab.imageUrl} alt={singleTab.title} layout="fill" objectFit="contain" priority={isFirst} />
-      </ImageContainer>
+        {/* <NextImage src={singleTab.videoIds} alt={singleTab.title} layout="fill" objectFit="contain" priority={isFirst} /> */}
+        {singleTab.videoIds.map((videoId) => <YouTube key={videoId} videoId={videoId}/>)}
+
+        </ImageContainer>
     );
   });
 
@@ -76,11 +114,14 @@ export default function FeaturesGallery() {
   return (
     <FeaturesGalleryWrapper>
       <Content>
-        <OverTitle>features</OverTitle>
-        <SectionTitle>What are you signing in for?</SectionTitle>
+        <OverTitle>Examples</OverTitle>
+        <SectionTitle id='examples'>Generations</SectionTitle>
+        <Quote author='Founder' content='These are some of the results from December 2022, as well as some from before ChatGPT was even released. They were generated without prompt engineering using older technologies (GPT-3, Mimic3, etc.).' cite='Founder' ></Quote>
+        <SectionTitle></SectionTitle>
       </Content>
       <GalleryWrapper>
         <TabsContainer>{tabsMarkup}</TabsContainer>
+
         {imagesMarkup}
       </GalleryWrapper>
     </FeaturesGalleryWrapper>
@@ -98,7 +139,7 @@ const GalleryWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-top: 4rem;
-
+  width: 100%;
   ${media('<=desktop')} {
     flex-direction: column;
   }
@@ -151,6 +192,7 @@ const ImageContainer = styled.div<{ isActive: boolean }>`
   ${media('<=desktop')} {
     width: ${(p) => (p.isActive ? '100%' : '0')};
   }
+  height: ${(p) => (p.isActive ? 'fit-content' : '0')};
 `;
 
 const Tab = styled.div<{ isActive: boolean }>`

@@ -1,40 +1,53 @@
 import NextLink from 'next/link';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Button from 'components/Button';
 import ButtonGroup from 'components/ButtonGroup';
 import Container from 'components/Container';
-import HeroIllustration from 'components/HeroIllustation';
 import OverTitle from 'components/OverTitle';
 import { useNewsletterModalContext } from 'contexts/newsletter-modal.context';
-import { media } from 'utils/media';
+import { media } from 'utils/media'
+import { useEffect } from 'react';
+import NextImage from 'next/image';
 
 export default function Hero() {
   const { setIsModalOpened } = useNewsletterModalContext();
+  useEffect(() => {
+    let c = 45;
 
+    function draw() {
+      document.documentElement.style.setProperty('--direction', c++ + 'deg');
+      requestAnimationFrame(draw);
+    }
+
+    requestAnimationFrame(draw);
+  }, []);
   return (
     <HeroWrapper>
+
       <Contents>
-        <CustomOverTitle>the coolest, product you have ever seen</CustomOverTitle>
-        <Heading>Site Under Dev :)</Heading>
-        <Description>Join Our Waitlist/Newsletter</Description>
+        <CustomOverTitle> Join the waiting list now!</CustomOverTitle>
+        <Heading>Become a part of the AI video revolution</Heading>
+        <Description>The world is changing rapidly, We are on mission to revolutionize video content creation and consumption using AI. Join us and be among the first to witness the power of AI video generation!</Description>
         <CustomButtonGroup>
           <Button onClick={() => setIsModalOpened(true)}>
-            Subscribe to the newsletter <span>&rarr;</span>
+            Join Us<span>&rarr;</span>
           </Button>
-          <NextLink href="#whitepaper" passHref>
+          <NextLink href="#examples" passHref>
             <Button transparent>
-              Features <span>&rarr;</span>
+              Examples <span>&rarr;</span>
             </Button>
           </NextLink>
         </CustomButtonGroup>
       </Contents>
       <ImageContainer>
-        <HeroIllustration />
+        {/* <HeroIllustration /> */}
+{/* add an image with this image: transparent-robot.png */}
+      <CustomNextImageInRight src="/transparent-clouds.png" alt="hero illustration" layout="fill" width="100%" height="100%" objectFit="contain" />
       </ImageContainer>
     </HeroWrapper>
   );
 }
-
+  
 const HeroWrapper = styled(Container)`
   display: flex;
   padding-top: 5rem;
@@ -44,6 +57,7 @@ const HeroWrapper = styled(Container)`
     flex-direction: column;
     align-items: center;
   }
+
 `;
 
 const Contents = styled.div`
@@ -62,22 +76,34 @@ const CustomButtonGroup = styled(ButtonGroup)`
 const ImageContainer = styled.div`
   display: flex;
   flex: 1;
-  justify-content: flex-end;
-  align-items: flex-start;
-
-  svg {
-    max-width: 45rem;
-  }
+  justify-content: center; // Adjusted this for center alignment
+  align-items: center; // Adjusted this for center alignment
+  position: relative; // Added this to contain the absolute positioned image
 
   ${media('<=desktop')} {
     margin-top: 2rem;
-    justify-content: center;
     svg {
       max-width: 80%;
     }
   }
 `;
+const pulse = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
+const CustomNextImageInRight = styled(NextImage)`
 
+  animation: ${pulse} 6s infinite;
+  // flip the image horizontally
+  transform: scaleX(-1);
+`
 const Description = styled.p`
   font-size: 1.8rem;
   opacity: 0.8;

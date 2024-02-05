@@ -1,10 +1,12 @@
 import NextImage from 'next/image';
 import React, { PropsWithChildren } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { media } from 'utils/media';
 import Container from './Container';
 import OverTitle from './OverTitle';
 import RichText from './RichText';
+
+
 
 export interface BasicSectionProps {
   imageUrl: string;
@@ -17,7 +19,7 @@ export default function BasicSection({ imageUrl, title, overTitle, reversed, chi
   return (
     <BasicSectionWrapper reversed={reversed}>
       <ImageContainer>
-        <NextImage src={imageUrl} alt={title} layout="fill" objectFit="cover" />
+        <AnimatedNextImage src={imageUrl} alt={title} layout="fill" width="100%" height="100%" objectFit="contain" />
       </ImageContainer>
       <ContentContainer>
         <CustomOverTitle>{overTitle}</CustomOverTitle>
@@ -27,6 +29,20 @@ export default function BasicSection({ imageUrl, title, overTitle, reversed, chi
     </BasicSectionWrapper>
   );
 }
+const pulse = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
+const AnimatedNextImage = styled(NextImage)`
+  animation: ${pulse} 6s infinite;
+`;
 
 const Title = styled.h1`
   font-size: 5.2rem;
@@ -67,6 +83,7 @@ const ImageContainer = styled.div`
   ${media('<=desktop')} {
     width: 100%;
   }
+  height: 100%;
 `;
 
 const ContentContainer = styled.div`
