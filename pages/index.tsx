@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+
 import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import styled from 'styled-components';
